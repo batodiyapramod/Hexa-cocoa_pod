@@ -9,10 +9,30 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+
+    runs-on: macOS-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: sh scripts/install.sh
-      - name: Run tests
-        run: sh scripts/test.sh
+    - uses: actions/checkout@master
+    - name: Build
+      run: swift build -v
+
+  test:
+      name: Test
+      runs-on: macOS-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@master
+        - name: Run tests
+          run: swift test -v
+
+
+
+name: Run tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  
