@@ -2624,6 +2624,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				STRIP_STYLE = debugging;
 				STRIP_SWIFT_SYMBOLS = NO;
+				TVOS_DEPLOYMENT_TARGET = 13.3;
 			};
 			name = Profile;
 		};
@@ -3841,6 +3842,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				STRIP_STYLE = debugging;
 				STRIP_SWIFT_SYMBOLS = NO;
+				TVOS_DEPLOYMENT_TARGET = 13.3;
 			};
 			name = Debug;
 		};
@@ -3852,6 +3854,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				STRIP_STYLE = debugging;
 				STRIP_SWIFT_SYMBOLS = NO;
+				TVOS_DEPLOYMENT_TARGET = 13.3;
 			};
 			name = Release;
 		};
