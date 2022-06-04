@@ -20,6 +20,8 @@ jobs:
     - name: Checkout project
       uses: actions/checkout@v1
     - name: Build application
-      run: |
-        set -o pipefail && xcodebuild clean "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH build-for-testing | xcpretty --color --simple
+          run: | swift test -v
+
+#       run: |
+#         set -o pipefail && xcodebuild clean "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH build-for-testing | xcpretty --color --simple
   
