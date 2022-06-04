@@ -1,37 +1,22 @@
 name: Run tests
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  test:
-      name: Test
-      runs-on: macOS-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@master
-        - name: Run tests
-          run: swift test -v
-
-# jobs:
-#   test:
-#       name: Test
-#       runs-on: macOS-latest
-#       steps:
-#         - name: Checkout
-#           uses: actions/checkout@master
-#         - name: Run tests
-#           run: swift test -v
-
-# jobs:
-#   test:
-#     name: Test
-#     runs-on: macOS-latest
-#     steps:
-#     - name: Checkout project
-#       uses: actions/checkout@v1
-#     - name: Build application
-#           run: | swift test -v
-
-#       run: |
-#         set -o pipefail && xcodebuild clean "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH build-for-testing | xcpretty --color --simple
-  
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: Show eligible build destinations for Backtrace tvOS
+      run: xcodebuild -showdestinations -scheme Backtrace-tvOS-lib -destination 'platform=tvOS Simulator,OS=15.2,name=Apple TV'
+    - name: Build and test ( tvOS 15.0)
+      run: xcodebuild test -scheme Backtrace-tvOS-lib -destination 'platform=tvOS Simulator,OS=15.2,name=Apple TV'
+    - name: Show eligible build destinations for Backtrace iOS
+      run: xcodebuild -showdestinations -scheme Backtrace-iOS-lib
+    - name: Build and test ( iOS 15.0)
+      run: xcodebuild test -scheme Backtrace-iOS-lib -destination 'platform=iOS Simulator, OS=15.2,name=iPhone 12 Pro'
