@@ -1,0 +1,6 @@
+framework module Pods_Backtrace_macOSTests {
+  umbrella header "Pods-Backtrace-macOSTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
