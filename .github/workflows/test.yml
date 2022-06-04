@@ -2,6 +2,15 @@ name: Run tests
 
 on: [push]
 
+  test:
+      name: Test
+      runs-on: macOS-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@master
+        - name: Run tests
+          run: swift test -v
+
 # jobs:
 #   test:
 #       name: Test
@@ -12,15 +21,15 @@ on: [push]
 #         - name: Run tests
 #           run: swift test -v
 
-jobs:
-  test:
-    name: Test
-    runs-on: macOS-latest
-    steps:
-    - name: Checkout project
-      uses: actions/checkout@v1
-    - name: Build application
-          run: | swift test -v
+# jobs:
+#   test:
+#     name: Test
+#     runs-on: macOS-latest
+#     steps:
+#     - name: Checkout project
+#       uses: actions/checkout@v1
+#     - name: Build application
+#           run: | swift test -v
 
 #       run: |
 #         set -o pipefail && xcodebuild clean "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH build-for-testing | xcpretty --color --simple
